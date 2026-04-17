@@ -1,0 +1,101 @@
+{% extends base %}
+
+{% block postamble %}
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="app-container dark-theme">
+    <!-- Sidebar -->
+    <aside class="glass-sidebar">
+        <div class="sidebar-header">
+            <h2><span class="gradient-text">Footlysis</span> AI</h2>
+        </div>
+        
+        <div class="sidebar-section">
+            <div class="control-group" style="margin-bottom: 1rem;">
+                {{ embed(roots.filters_accordion) }}
+            </div>
+        </div>
+
+        <div class="sidebar-section query-section">
+            <h3>🤖 Ask AI</h3>
+            <div class="control-group">
+                {{ embed(roots.query_input) }}
+            </div>
+            <div class="query-response">
+                {{ embed(roots.query_output) }}
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-nav">
+            <div class="nav-content">
+                <h1>Player Analytics Dashboard</h1>
+                <p class="subtitle">Next-gen performance insights and comparisons</p>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Top Row -->
+            <div class="glass-card stat-card">
+                <div class="card-header">
+                    <h3>📊 Player Performance</h3>
+                    <div class="card-controls">
+                        {{ embed(roots.player_select) }}
+                    </div>
+                </div>
+                <div class="card-body">
+                    {{ embed(roots.player_stats) }}
+                </div>
+            </div>
+
+            <div class="glass-card stat-card">
+                <div class="card-header">
+                    <h3>📈 Performance Trend</h3>
+                </div>
+                <div class="card-body">
+                    {{ embed(roots.trend_chart) }}
+                </div>
+            </div>
+
+            <!-- Middle Row: Comparison (Full Width) -->
+            <div class="glass-card full-width">
+                <div class="card-header flex-header">
+                    <h3>🔥 Player Comparison</h3>
+                    <div class="compare-controls">
+                        {{ embed(roots.player_compare_1) }}
+                        <span class="vs-badge">VS</span>
+                        {{ embed(roots.player_compare_2) }}
+                    </div>
+                </div>
+                <div class="card-body">
+                    {{ embed(roots.compare_players) }}
+                </div>
+            </div>
+
+            <!-- Bottom Row: Top Players -->
+            <div class="glass-card full-width">
+                <div class="card-header">
+                    <h3>🏆 Top Players Overview</h3>
+                </div>
+                <div class="card-body">
+                    {{ embed(roots.top_players) }}
+                </div>
+            </div>
+            
+            <!-- Data Explorer Section -->
+            <div class="glass-card full-width">
+                <div class="card-header">
+                    <h3>🔍 Data Explorer</h3>
+                </div>
+                <div class="card-body table-container">
+                    {{ embed(roots.filtered_data_table) }}
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
